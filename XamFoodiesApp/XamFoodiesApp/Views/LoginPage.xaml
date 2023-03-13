@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XamFoodiesApp.Views.LoginPage" BackgroundColor="#218380">
+    <ContentPage.Content>
+        <StackLayout>
+        <StackLayout HorizontalOptions="CenterAndExpand" Padding="0,50,0,0" VerticalOptions="StartAndExpand" >
+            <Label FontSize="22" FontAttributes="Bold" TextColor="White" FontFamily="Lobster">Xam Foodies App</Label>
+            </StackLayout>
+         <StackLayout BackgroundColor="#AA8797" Padding="20" HorizontalOptions="FillAndExpand" Margin="0,-100,0,0" VerticalOptions="StartAndExpand" >
+            <Label TextColor="White" FontSize="20" HorizontalOptions="Center">Login</Label>
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                <Label TextColor="White" FontSize="18">User Name : </Label>
+                <Entry TextColor="White" HorizontalOptions="FillAndExpand" x:Name="username" Text="{Binding UserName}"></Entry>
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+                <Label TextColor="White" FontSize="18">Password : </Label>
+                <Entry TextColor="White" x:Name="password" HorizontalOptions="FillAndExpand" Text="{Binding Password}"></Entry>
+            </StackLayout>
+            <Button Text="login" Command="{Binding LoginClicked}"></Button>
+            </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

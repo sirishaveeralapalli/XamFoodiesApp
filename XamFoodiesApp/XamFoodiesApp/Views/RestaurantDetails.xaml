@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XamFoodiesApp.Views.RestaurantDetails">
+    <ContentPage.Content>
+                 <StackLayout x:Name="mainLayout" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="0">
+                     <StackLayout x:Name="headerLayout" Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="#218380" Padding="0,10,0,10" Margin="0,0,0,0">
+                <Image VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="back.png" Margin="2,0,10,0">
+                    <Image.WidthRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>50</OnIdiom.Phone>
+                            <OnIdiom.Tablet>60</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Image.WidthRequest>
+                    <Image.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>20</OnIdiom.Phone>
+                            <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Image.HeightRequest>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackAction}" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="headerLabel" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White">
+                    <Label.FontSize>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>16</OnIdiom.Phone>
+                            <OnIdiom.Tablet>20</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Label.FontSize>
+                </Label>
+                
+            </StackLayout>
+         <StackLayout x:Name="listLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                
+                <ListView x:Name="dataListview" ItemsSource="{Binding ItemsList}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HasUnevenRows="true" SeparatorColor="Gray" SeparatorVisibility="Default">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout x:Name="listItem" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,0,0">
+                                        <Label Text="{Binding ItemName}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#003087" FontAttributes="Bold">
+                                            <Label.FontSize>
+                                                <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="20" />
+                                            </Label.FontSize>
+                                        </Label>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10">
+
+                                            <Label Text="{Binding VegOrNonVeg}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="{Binding VegOrNonVegColor}">
+                                                <Label.FontSize>
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="17" />
+                                                </Label.FontSize>
+                                            </Label>
+                                        </StackLayout>
+                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10">
+                                             <Label Text="Price : " HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="Gray">
+                                                <Label.FontSize>
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="17" />
+                                                </Label.FontSize>
+                                            </Label>
+                                              <Label Text="{Binding Price}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  TextColor="Gray">
+                                                <Label.FontSize>
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="17" />
+                                                </Label.FontSize>
+                                            </Label>
+                                             </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding IsAddingAllowed}" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,10,0" Spacing="20">
+                                        <Label HorizontalOptions="End" VerticalOptions="CenterAndExpand" Text="Quantity : "></Label>
+                                         <Entry HorizontalOptions="End" VerticalOptions="CenterAndExpand" Text="{Binding Quantity}">
+                                            <Entry.WidthRequest>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Phone>20</OnIdiom.Phone>
+                                                    <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                </OnIdiom>
+                                            </Entry.WidthRequest>
+                                            <Entry.HeightRequest>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Phone>40</OnIdiom.Phone>
+                                                    <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                </OnIdiom>
+                                            </Entry.HeightRequest>
+                                           
+                                        </Entry>
+                                        <Button Text="Add" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Clicked="TapGestureRecognizer_Tapped" CommandParameter="{Binding Id}">
+                                            <Button.WidthRequest>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Phone>100</OnIdiom.Phone>
+                                                    <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                </OnIdiom>
+                                            </Button.WidthRequest>
+                                            <Button.HeightRequest>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Phone>50</OnIdiom.Phone>
+                                                    <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                </OnIdiom>
+                                            </Button.HeightRequest>
+                                        </Button>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label x:Name="noResultsLabel" TextColor="Black" Text="No results found" IsVisible="false" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                </Label>
+             <Button Text="Checkout" Clicked="Button_Clicked" x:Name="checkoutButton" BackgroundColor="#D81159" TextColor="White"></Button>
+            </StackLayout>
+
+</StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XamFoodiesApp.Views.RestaurantListView">
+    <ContentPage.Content>
+         <StackLayout x:Name="mainLayout" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="0">
+                    <StackLayout x:Name="headerLayout" Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="#218380" Padding="0,10,0,10" Margin="0,0,0,0">
+            
+                <Label x:Name="headerLabel" FontAttributes="Bold" Margin="70,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Restaurants List" TextColor="White">
+                    <Label.FontSize>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>20</OnIdiom.Phone>
+                            <OnIdiom.Tablet>20</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Label.FontSize>
+                </Label>
+                <Button Text="LogOff" HorizontalOptions="End" WidthRequest="100" HeightRequest="50" VerticalOptions="CenterAndExpand" Clicked="Button_Clicked"></Button>
+            </StackLayout>
+
+              <StackLayout x:Name="searchLayout" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                    <SearchBar x:Name="searchView" Placeholder="Search" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" TextChanged="searchView_TextChanged" />
+                </StackLayout>
+                <Label Margin="10,10,10,0" x:Name="NoList" IsVisible="false" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="No Restaurants Available" TextColor="Black">
+                    <Label.FontSize>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>12</OnIdiom.Phone>
+                            <OnIdiom.Tablet>16</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Label.FontSize>
+                </Label>
+
+                         <StackLayout x:Name="listLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                
+                <ListView x:Name="dataListview" ItemsSource="{Binding RestaurantsList}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HasUnevenRows="true" SeparatorColor="Gray" SeparatorVisibility="Default" ItemTapped="dataListview_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout x:Name="listItem" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,0,0">
+                                        <Label Text="{Binding DisplayName}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#003087" FontAttributes="Bold">
+                                            <Label.FontSize>
+                                                <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="20" />
+                                            </Label.FontSize>
+                                        </Label>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10">
+                                            <Image Source="location.png" HorizontalOptions="End" VerticalOptions="CenterAndExpand">
+                                                <Image.WidthRequest>
+                                                    <OnIdiom x:TypeArguments="x:Double">
+                                                        <OnIdiom.Phone>15</OnIdiom.Phone>
+                                                        <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                    </OnIdiom>
+                                                </Image.WidthRequest>
+                                                <Image.HeightRequest>
+                                                    <OnIdiom x:TypeArguments="x:Double">
+                                                        <OnIdiom.Phone>15</OnIdiom.Phone>
+                                                        <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                    </OnIdiom>
+                                                </Image.HeightRequest>
+                                            </Image>
+                                            <Label Text="{Binding Address}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="Gray">
+                                                <Label.FontSize>
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="17" />
+                                                </Label.FontSize>
+                                            </Label>
+                                        </StackLayout>
+                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10">
+                                             <Label Text="Price For Two : " HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="Gray">
+                                                <Label.FontSize>
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="17" />
+                                                </Label.FontSize>
+                                            </Label>
+                                              <Label Text="{Binding PriceForTwo}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="Gray">
+                                                <Label.FontSize>
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="17" />
+                                                </Label.FontSize>
+                                            </Label>
+                                             </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding IsEditable}" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,10,0" Spacing="20">
+                                        <Image Source="edit.png" HorizontalOptions="End" VerticalOptions="CenterAndExpand">
+                                            <Image.WidthRequest>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Phone>25</OnIdiom.Phone>
+                                                    <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                </OnIdiom>
+                                            </Image.WidthRequest>
+                                            <Image.HeightRequest>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Phone>25</OnIdiom.Phone>
+                                                    <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                </OnIdiom>
+                                            </Image.HeightRequest>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="TapGestureRecognizer_Tapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Source="delete.png" HorizontalOptions="End" VerticalOptions="CenterAndExpand">
+                                            <Image.WidthRequest>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Phone>25</OnIdiom.Phone>
+                                                    <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                </OnIdiom>
+                                            </Image.WidthRequest>
+                                            <Image.HeightRequest>
+                                                <OnIdiom x:TypeArguments="x:Double">
+                                                    <OnIdiom.Phone>25</OnIdiom.Phone>
+                                                    <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                                                </OnIdiom>
+                                            </Image.HeightRequest>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="TapGestureRecognizer_Tapped_1"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label x:Name="noResultsLabel" TextColor="Black" Text="No results found" IsVisible="false" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                </Label>
+            </StackLayout>
+               <StackLayout x:Name="addHeader" HeightRequest="60" BackgroundColor="Silver" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                <Button x:Name="addButton" IsVisible="true" Text="Add new Restaurant" Command="{Binding AddRestaurantClicked}" FontAttributes="Bold" BackgroundColor="#D81159" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                    <Button.FontSize>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>16</OnIdiom.Phone>
+                            <OnIdiom.Tablet>20</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Button.FontSize>
+                    <Button.WidthRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>200</OnIdiom.Phone>
+                            <OnIdiom.Tablet>350</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Button.WidthRequest>
+                    <Button.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>40</OnIdiom.Phone>
+                            <OnIdiom.Tablet>60</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Button.HeightRequest>
+                </Button>
+            </StackLayout>
+</StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

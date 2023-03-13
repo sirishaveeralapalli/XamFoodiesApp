@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XamFoodiesApp.Views.AddNewRestaurant">
+    <ContentPage.Content>
+                <StackLayout x:Name="mainLayout" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="0">
+                    <StackLayout x:Name="headerLayout" Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="0" BackgroundColor="#218380" Padding="0,10,0,10" Margin="0,0,0,0">
+                <Image VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="back.png" Margin="2,0,10,0">
+                    <Image.WidthRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>50</OnIdiom.Phone>
+                            <OnIdiom.Tablet>60</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Image.WidthRequest>
+                    <Image.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>20</OnIdiom.Phone>
+                            <OnIdiom.Tablet>30</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Image.HeightRequest>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackAction}" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="headerLabel" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Add New Restaurant" TextColor="White">
+                    <Label.FontSize>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>16</OnIdiom.Phone>
+                            <OnIdiom.Tablet>20</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Label.FontSize>
+                </Label>
+                
+            </StackLayout>
+
+     <ScrollView x:Name="addDairyLayoutPhone" IsVisible="true" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="10">
+                    <StackLayout.Padding>
+                        <OnIdiom x:TypeArguments="Thickness">
+                            <OnIdiom.Phone>10,10,30,10</OnIdiom.Phone>
+                            <OnIdiom.Tablet>20,20,20,20</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </StackLayout.Padding>
+                    <StackLayout VerticalOptions="StartAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                        <Label VerticalOptions="CenterAndExpand" TextColor="#003087">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Name" />
+                                        <Span Text="*" TextColor="Red" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Entry x:Name="dairyNameEntry" Text="{Binding DisplayName}" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                        <Label TextColor="#003087" VerticalOptions="CenterAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Address" />
+                                        <Span Text="*" TextColor="Red" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Editor x:Name="streetEditor1" TextColor="#000000" Text="{Binding AddressLine1}" HorizontalOptions="FillAndExpand" HeightRequest="50" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                         <Editor x:Name="streetEditor2" TextColor="#000000" Text="{Binding AddressLine2}" HorizontalOptions="FillAndExpand" HeightRequest="50" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="5" Padding="0">
+                        <Label TextColor="#003087" VerticalOptions="CenterAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Price for two" />
+                                        <Span Text="*" TextColor="Red" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Entry x:Name="cityEntry" Keyboard="Numeric" Text="{Binding PriceForTwo}" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                    </StackLayout>
+                   
+                  <Button x:Name="saveBtn" Text="Save" Margin="0,0,10,0" TextColor="White" BackgroundColor="#D81159" FontAttributes="Bold" Command="{Binding SaveClicked}" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
+                    <Button.FontSize>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>14</OnIdiom.Phone>
+                            <OnIdiom.Tablet>20</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Button.FontSize>
+                    <Button.WidthRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="iOS">60</On>
+                                    <On Platform="Android">70</On>
+                                </OnPlatform>
+                            </OnIdiom.Phone>
+                            <OnIdiom.Tablet>90</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Button.WidthRequest>
+                    <Button.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Phone>
+                               <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="iOS">30</On>
+                                    <On Platform="Android">40</On>
+                                </OnPlatform>
+                            </OnIdiom.Phone>
+                            <OnIdiom.Tablet>40</OnIdiom.Tablet>
+                        </OnIdiom>
+                    </Button.HeightRequest>
+                </Button>
+                  
+                  
+                </StackLayout>
+            </ScrollView>
+                </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
